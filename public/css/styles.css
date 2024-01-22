@@ -1,0 +1,161 @@
+body {
+    color: #016c05;
+    background: #f5f5f5;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
+}
+
+table#tabela.dataTable tbody tr:hover {
+    background-color: #ffa;
+  }
+
+table#tabela.dataTable tbody tr:hover > .sorting_1 {
+    background-color: #ffa;
+  }
+
+  .table-title {
+    padding-bottom: 15px;
+    background-color: #198754;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+
+.table-responsive {
+    margin: 30px 0;
+}
+.table-wrapper {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.table-title .btn {
+    color: #ffffff;
+    float: right;
+    font-size: 14px;
+    background: #0068c3;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+.table-title .btn:hover, .table-title .btn:focus {
+    color: #566787;
+    background: #f2f2f2;
+}
+
+.dataTables_filter{
+    float: left;
+}
+
+.dt-buttons {
+    float: right !important;
+}
+
+button.dt-button{
+    color: #ffffff;
+    font-size: 13px;
+    background: #0068c3;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+
+.dt-button-collection{
+    width: 100px !important;
+}
+
+div.dt-button-collection button.dt-button{
+    margin: 0 0 0 0 !important;
+}
+
+button.dt-button:hover, button.dt-button:focus {
+    color: #566787;
+    background: #f2f2f2;
+}
+
+.dataTables_length{
+    float: left;
+}
+
+.pagination{
+    --bs-pagination-font-size: 13px!important;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .actions i {
+    font-size: 1.5em;
+    margin-right: 0.6em;
+  }
+  
+  .actions i:hover {
+    color: #566787;
+  }
+  
+  .actions form {
+    margin: 0;
+  }
+  
+  .actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+ #lixeira{
+    color: #ff0004;
+  }
+
+  #lapis{
+    color: #ffaa00;
+  }
+
+#impressora {
+  color: #016c05;
+}
+
+  table.dataTable tbody td {
+    vertical-align: middle;
+  }
+
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+[data-title]:after {
+    content: attr(data-title);
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    font-size: 100%;
+    position: absolute;
+    padding: 1px 5px 2px 5px;
+    top: -90%;
+    left: -50%;
+    white-space: nowrap;
+    box-shadow: 1px 1px 3px #222222;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+}
+[data-title] {
+    position: relative;
+}
+
+#linha-form{
+  margin-top: 10px!important;
+}

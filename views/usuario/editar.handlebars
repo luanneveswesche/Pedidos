@@ -1,0 +1,35 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper" style="max-width: 600px; margin: auto;">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-mb-3">
+                        <h4>Editar Usuário</h4>
+                    </div>
+                </div>
+            </div>
+
+            <form action="/usuario/editarPost" method="POST">
+                <input type="hidden" name="id" value={{usuario.id}}>
+            <div class="form-control">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Usuário</label>
+                    <input type="text" class="form-control" name="nome" value="{{usuario.nome}}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" value="{{usuario.email}}">
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" name="senha" value="">
+                </div>
+                <center>
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> Salvar</button>
+                <a href="/usuario" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+                </center>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

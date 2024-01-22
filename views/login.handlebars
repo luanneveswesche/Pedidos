@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Pedidos</title>
+  <!-- CSS Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">       
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+  <!-- Fonte do body-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <!--Css personalisado-->
+  <link rel="stylesheet" href="/css/styles.css"> 
+
+  <link rel='icon' href='/img/favicon.ico' />
+</head>
+<body>
+
+<div class="container">
+<div class="container-xl">
+     {{#if mensagem}}
+        <br>
+        <div class="alert alert-danger" role="alert" style="max-width: 350px; margin: auto;">
+        {{mensagem}}
+        </div>
+      {{/if}}
+    <div class="table-responsive">
+        <div class="table-wrapper" style="max-width: 600px; margin: auto;">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-mb-3">
+                        <h4>Login</h4>
+                    </div>
+                </div>
+            </div>
+            <form action="/usuario/loginPost" method="POST">
+            <div class="form-control">
+                <div class="mb-3">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" name="senha" placeholder="Senha" required>
+                </div>
+                <center>
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> Login</button>
+                </center>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div> 
+</body>
+</html>

@@ -1,0 +1,162 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-mb-3">
+                        <h4>Venda</h4>
+                    </div>
+                </div>
+            </div>
+            <form action="/pedido/salvarPedido" method="POST">
+                <div class="form-control">
+                    <div class="row" id="linha-form">
+                        <div class="col-12 col-sm-3">
+                            <input type="hidden" name="id" value="{{pedido.id}}">
+                            <label for="id_pedido" class="form-label">ID Venda:</label>
+                            <input type="number" class="form-control" name="id_pedido" value="{{pedido.id}}" disabled readonly>
+                        </div>
+                        <div class="col-12 col-sm-3">
+                            <label for="data" class="form-label">Data:</label>
+                            <input type="date" class="form-control" name="data" value="{{pedido.data}}" required>
+                        </div>
+                    </div>
+                    <div class="row" id="linha-form">
+                        <div class="col-12 col-sm-6">
+                            <label for="intermediario" class="form-label">Intermediario:</label>
+                            <select class="form-select" aria-label="intermediario" name="intermediario" required>
+
+                                {{#each intermediarios}}
+                                {{#if this.selecionado}}
+                                <option value="{{this.id}}" selected>{{this.nome}}</option>
+                                {{else}}
+                                <option value="{{this.id}}">{{this.nome}}</option>
+                                {{/if}}
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-3">
+                            <label for="valor_pedido" class="form-label">Valor da venda:</label>
+                            <input type="text" class="form-control float-end text-end" name="valor_pedido" id="valor_pedido"
+                                value="{{pedido.valor_pedido}}" disabled readonly>
+                        </div>
+                    </div>
+                    <div class="row" id="linha-form">
+                        <div class="col-12 col-sm-12">
+                            <center>
+                                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"></i>
+                                    Salvar Venda</button>
+                                <a href="/pedido" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i>
+                                    Cancelar</a>
+                            </center>
+                        </div>
+                    </div>
+            </form> 
+        </div>
+
+        <div class="row" id="linha-form">
+            <div class="col-12 col-sm-12">
+                <h5>Itens da Venda</h5>
+            </div>
+        </div>
+        <form action="javascript:;" onsubmit="AdicionarProduto(this);" method="POST">
+        <input type="hidden" name="PedidoId" value="{{pedido.id}}">
+        <div class="form-control">
+            <div class="row" id="linha-form">
+                <label for="ProdutoId" class="col-sm-1 col-form-label">Produto:</label>
+                <div class="col-12 col-sm-5">
+                    <select class="form-select" aria-label="ProdutoId" name="ProdutoId" id="ProdutoId" required>
+                        <option selected>Selecione o produto</option>
+                        {{#each produtos}}
+                        <option value="{{this.id}}">{{this.nome}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <label for="quantidade" class="col-sm-1 col-form-label" style="margin-left: 150px;">Kg:</label>
+                <div class="col-12 col-sm-2" style="margin-left: -60px;">
+                    <input type="number" step="0.01" class="form-control" name="quantidade" id="quantidade" value="1">
+                </div>
+                <div class="col-12 col-sm-2">
+                    <button type="submit" class="btn btn-primary" name="add"><i class="bi bi-check-circle-fill"></i>
+                        Adicionar</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12">
+                    <hr class="bg-dark border-2 border-top border-dark">
+                </div>
+            </div>
+            <table class="table table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Produto</th>
+                        <th style="text-align:right !important" scope="col">Total Kg</th>
+                        <th style="text-align:right !important" scope="col">Valor por Kg</th>
+                        <th style="text-align:right !important" scope="col">Valor Total</th>
+                        <th style="text-align:center !important" scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 {{#if itens}}  
+                    {{#each itens}}
+					<tr id='{{this.id}}'><th scope='row'>{{this.ProdutoId}}</th>
+						<td>{{this.Produto.nome}}</td>
+						<td align='right'>{{this.quantidade}} Kg</td>
+						<td align='right'>R${{this.valor_unitario}}</td>
+						<td align='right'>R${{this.valor_total}}</td>
+						<td align='center'><span class='actions'>
+                            <form action="javascript:;" onsubmit="RemoverProduto(this);" method="POST">
+                                <input type='hidden' name='id_item' value='{{this.id}}'>
+                                <input type='hidden' name='id_pedido' value='{{this.PedidoId}}'>
+                                <button type='submit' data-toggle='tooltip' data-placement='top' data-title='Excluir'>
+                                    <i class='bi bi-trash3-fill' id='lixeira'></i>
+                                </button>
+                            </form>
+                        </span>
+                        </td>
+                    </tr>
+    
+                    {{/each}}
+
+                 {{/if}} 
+                </tbody>
+            </table>
+            <div style="text-align: center;">Assinatura<br> __________________________________________________</div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+        function AdicionarProduto(form) {
+            $.post("/pedido/addProduto", $(form).serialize(), function (resposta) {
+                var linha = "<tr id='" + resposta.produto.id + "'><th scope='row'>" + resposta.produto.ProdutoId + "</th>";
+                linha += "<td>" + resposta.produto.nome + "</td>";
+                linha += "<td align='right'>" + parseFloat(resposta.produto.quantidade).toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "</td>";
+                linha += "<td align='right'>" + parseFloat(resposta.produto.valor_unitario).toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "</td>";
+                linha += "<td align='right'>" + parseFloat(resposta.produto.valor_total).toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "</td>";
+                linha += `<td align='center'><span class='actions'>
+                            <form action='javascript:;' onsubmit='RemoverProduto(this);' method='POST'>
+                                <input type='hidden' name='id_item' value='${resposta.produto.id}'>
+                                <input type='hidden' name='id_pedido' value='${resposta.produto.PedidoId}'>
+                                <button type='submit' data-toggle='tooltip' data-placement='top' data-title='Excluir'>
+                                    <i class='bi bi-trash3-fill' id='lixeira'></i>
+                                </button>
+                            </form>
+                        </span></td></tr>`;
+                $("table tbody").append(linha);
+                $("#valor_pedido").val(parseFloat(resposta.total_pedido).toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+                $("#quantidade").val(parseFloat(1).toFixed(2));
+                $("#ProdutoId option")[0].selected = true;
+            });
+        };
+
+        function RemoverProduto(form) { 
+            $.post("/pedido/removeProduto", $(form).serialize(), function (resposta) {
+                $("#"+resposta.item+"").remove();
+                $("#valor_pedido").val(parseFloat(resposta.total_pedido).toLocaleString('pt-BR',{style:'decimal',minimumFractionDigits:2,maximumFractionDigits:2}));
+            });
+        };
+</script>

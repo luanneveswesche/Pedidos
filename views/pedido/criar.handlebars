@@ -1,0 +1,39 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper" style="max-width: 600px; margin: auto;">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-mb-3">
+                        <h4>Novo Pedido</h4>
+                    </div>
+                </div>
+            </div>
+
+            <form action="/pedido/criarPedido" method="POST">
+            <div class="form-control">
+                <div class="mb-3">
+                    <label for="data" class="form-label">Data</label>
+                    <input type="date" class="form-control" name="data" value="{{data_atual}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="data" class="form-label">Intermediario</label>
+                    <select class="form-select" aria-label="intermediario" name="intermediario" required>
+                    <option selected>Selecione o intermediario</option>
+                    {{#each intermediarios}}
+                    <option value="{{this.id}}">{{this.nome}}</option>
+                    {{/each}}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuário</label>
+                    <input type="text" class="form-control" name="usuario" value="{{usuario}}" disabled readonly>
+                </div>
+                <center>
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> Iniciar Pedido</button>
+                <a href="/pedido" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+                </center>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

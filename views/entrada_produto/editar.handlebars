@@ -1,0 +1,40 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper" style="max-width: 600px; margin: auto;">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-mb-3">
+                        <h4>Nova Entrada de Produto</h4>
+                    </div>
+                </div>
+            </div>
+
+            <form action="/entrada_produto/editarPost" method="POST">
+                <input type="hidden" name="id" value={{entrada_produto.id}}>
+                <div class="form-control">
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="text" class="form-control" name="data" placeholder="Data"
+                            value="{{entrada_produto.data}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="produto" class="form-label">Produto</label>
+                        <input type="text" class="form-control" name="produto" placeholder="Produto"
+                            value="{{entrada_produto.produto}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="peso" class="form-label">Peso do Fardo</label>
+                        <input type="number" step="0.01" class="form-control" name="peso" placeholder="Peso do fardo"
+                            value="{{entrada_produto.peso}}">
+                    </div>
+                    <center>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"></i>Salvar
+                            Entrada</button>
+                        <a href="/entrada_produto" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i>
+                            Cancelar</a>
+                    </center>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

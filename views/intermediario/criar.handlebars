@@ -1,0 +1,42 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper" style="max-width: 600px; margin: auto;">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-mb-3">
+                        <h4>Novo Intermediario</h4>
+                    </div>
+                </div>
+            </div>
+
+            <form action="/intermediario/criarPost" method="POST">
+            <div class="form-control">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Intermediario</label>
+                    <input type="text" class="form-control" name="nome" placeholder="Nome">
+                </div>
+                <div class="mb-3">
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" name="cidade" placeholder="Cidade">
+                </div>
+                <div class="mb-3">
+                    <label for="uf" class="form-label">Estado</label>
+                    <input type="text" class="form-control" name="uf" placeholder="Estado">
+                </div>
+                 <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="text" class="form-control" name="email" placeholder="E-mail">
+                </div>
+                 <div class="mb-3">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" placeholder="Telefone">
+                </div>
+                <center>
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> Salvar</button>
+                <a href="/intermediario" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+                </center>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

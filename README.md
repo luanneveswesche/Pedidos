@@ -1,1 +1,2 @@
-# Pedidos
+Trabalho desenvolvido em grupo com os discente do curso  de Analise e desenvolvimento de Sistemas 
+do IFSC/Canoinhas...
